@@ -1,0 +1,16 @@
+{
+  "name": "csproj-enforcer",
+  "version": "1.0.0",
+  "description": "Enforce csproj assets are added to the csproj",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Declan Cook",
+  "license": "ISC",
+  "dependencies": {
+    "glob": "^7.1.2",
+    "xmldoc": "^1.1.0",
+    "yargs": "^8.0.2"
+  }
+}
