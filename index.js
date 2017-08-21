@@ -3,8 +3,12 @@ var enforcer = require('./src/enforcer');
 
 var defaults = {
     path: '**/*.csproj',
-    fileSystem: '**/{*.js,*.png,*.jpg,*.gif,*.jpeg}'
+    fileSystem: '**/{*.js,*.png,*.jpg,*.gif,*.jpeg}',
+    ignore: 'node_modules/**'
 }
+
+//TODO options
+var options = defaults;
 
 glob(defaults.path, {}, (err, files) => {
    if(err) {
