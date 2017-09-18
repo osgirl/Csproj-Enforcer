@@ -11,8 +11,20 @@ function enforcer(projPath, options) {
     return ig.childrenNamed('Content');
   }).reduce(function(nodes, contentNodes) {
     return contentNodes.map(cn => {
-      return cn.attr.Include.replace(/\\/g, '/')
+      return cn.attr.Include.replace(/\\/g, '/');
     }).concat(nodes);
+  }, []);
+
+  var linkFiles = document.childrenNamed('ItemGroup').map(function(ig) {
+    return ig.childrenNamed('None');
+  }).reduce(function(nodes, linkNodes) {
+    linkNodes.forEach(ln => {
+      var child = ln.childNamed('Link');
+      if(!child) return [];
+      nodes.push(child.val.replace(/\\/g, '/'));
+      nodes.push(ln.attr.Include.replace(/\\/g, '/'))
+    });
+    return nodes;
   }, []);
 
 
@@ -25,7 +37,7 @@ function enforcer(projPath, options) {
         }
         let hasError = false;
         files.forEach((file) => {
-          if(contentNodes.indexOf(file) === -1) {
+          if(contentNodes.indexOf(file) === -1 && linkFiles.indexOf(file) === -1 ) {
             console.log(`Error: File (${file}) found but is not referenced inside ${projPath}`);
             hasError = true;
           }

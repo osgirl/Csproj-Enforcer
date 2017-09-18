@@ -4,7 +4,7 @@ var enforcer = require('./src/enforcer');
 var defaults = {
     path: '**/*.csproj',
     fileSystem: '**/{*.js,*.png,*.jpg,*.gif,*.jpeg}',
-    ignore: 'node_modules/**'
+    ignore: ['node_modules/**', 'umbraco/**', 'umbraco_client/**', 'FrontEndSrc/**']
 }
 
 //TODO options
