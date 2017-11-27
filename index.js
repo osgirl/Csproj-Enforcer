@@ -2,7 +2,7 @@ var glob = require('glob');
 var enforcer = require('./src/enforcer');
 
 var defaults = {
-    path: ['**/*.csproj', '!'],
+    path: '**/*.csproj',
     fileSystem: '**/{*.es,*.scss,*.sass,*.js,*.png,*.jpg,*.gif,*.jpeg,*.md}',
     ignore: ['node_modules/**',
      'umbraco/**',
