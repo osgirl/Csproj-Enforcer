@@ -2,8 +2,8 @@ var glob = require('glob');
 var enforcer = require('./src/enforcer');
 
 var defaults = {
-    path: '**/*.csproj',
-    fileSystem: '**/{*.js,*.png,*.jpg,*.gif,*.jpeg,*.md}',
+    path: ['**/*.csproj', '!'],
+    fileSystem: '**/{*.es,*.scss,*.sass,*.js,*.png,*.jpg,*.gif,*.jpeg,*.md}',
     ignore: ['node_modules/**',
      'umbraco/**',
      'umbraco_client/**',
@@ -18,7 +18,7 @@ var defaults = {
 //TODO options
 var options = defaults;
 
-glob(defaults.path, {}, (err, files) => {
+glob(defaults.path, { ignore: ['node_modules/**'] }, (err, files) => {
    if(err) {
      console.error(err);
      return;
